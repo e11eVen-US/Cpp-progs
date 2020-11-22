@@ -71,13 +71,7 @@ int participant::get_place()
 
 bool operator==(participant eq_eq, participant eq_eq2)
 {
-    if (eq_eq.club != eq_eq2.club) return false;
-    if (eq_eq.city != eq_eq2.city) return false;
-    if (eq_eq.coach != eq_eq2.coach) return false;
-    if (eq_eq.date != eq_eq2.date) return false;
-    if (eq_eq.budget != eq_eq2.budget) return false;
-    if (eq_eq.points != eq_eq2.points) return false;
-    if (eq_eq.place != eq_eq2.place) return false;
+    if ((eq_eq.club != eq_eq2.club) || (eq_eq.city != eq_eq2.city) || (eq_eq.coach != eq_eq2.coach) || (eq_eq.date != eq_eq2.date) || (eq_eq.budget != eq_eq2.budget) || (eq_eq.points != eq_eq2.points) || (eq_eq.place != eq_eq2.place)) return false;
     return true;
 }
 

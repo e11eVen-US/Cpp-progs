@@ -23,7 +23,7 @@ int main()
     int16_t amount_of_teams;
     int16_t test = amount_of_teamsf();
     bool data_in_structure = false;
-    string file_name = "file.txt";
+    string file_name = "file.txt", file_name2 = "file2.txt";
 
     if (test == 0)
     {
@@ -70,16 +70,16 @@ int main()
                 cout << "Data in structure: false\n";
                 cout << "String in file: " << amount_of_teams << "\n\n";
             }
-            cout << "What do you wanna do?\n 1. Filling structure from file\n 2. All teams from city you'll type.\n 3. The team with the highest ratio of points scored to money spent (budget)\n 4. Structure printing\n 5. Fill structure(and file) from keyboard\n 6. Add to structure and file.\n 7. Delete from structure\n\n\n For the 5th lab below.\n 8.Add to vector \n 9. ==\n 10. << ofstream\n 11. << ostream\n ---> ";
+            cout << "What do you wanna do?\n 1. Filling structure from file\n 2. All teams from city you'll type.\n 3. The team with the highest ratio of points scored to money spent (budget)\n 4. Structure printing\n 5. Fill structure(and file) from keyboard\n 6. Add to structure and file.\n 7. Delete from structure\n\n\n For the 5th lab below.\n 8.+= \n 9. ==\n 10. << ofstream\n 11. << ostream\n ---> 12. -= \n ";
             cin >> choice;
-            if (choice < 1 || choice > 11)
+            if (choice < 1 || choice > 12)
             {
                 system("cls");
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-                cerr << "You have typed " << choice << ". You have to type 1 - 7.\n";
+                cerr << "You have typed " << choice << ". You have to type 1 - 12.\n";
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
             }
-        } while (choice < 1 || choice > 11);
+        } while (choice < 1 || choice > 12);
 
 
         cin.ignore();
@@ -172,15 +172,9 @@ int main()
                 file << " " << test1 << endl;
                 test.set_place(test1);
 
-
-                b.add_participant(data_in_structure, test);
-
+                b.add_participant(test);
 
                 file.close();
-
-                FILE* fileC = fopen("file.txt", "r+");
-                fprintf(fileC, "%d", b.get_amount());
-                fclose(fileC);
             }
             else
             {
@@ -231,13 +225,15 @@ int main()
         case 8:
         {
             participant pl_eq;
+
             b += pl_eq;
+            break;
         }
 
         case 9:
         {
             participant eq_eq, eq_eq2;
-            //eq_eq.set_city("qwe");
+
             if (eq_eq == eq_eq2)
             {
                 cout << "They are equal.\n";
@@ -252,15 +248,27 @@ int main()
             participant eq_eq;
 
             ofstream file;
-            file.open("file2.txt", ios::app);
+            file.open(file_name2, ios::app);
             file << eq_eq;
             file.close();
+            break;
         }
         case 11:
         {
             participant eq_eq;
 
             cout << eq_eq;
+            break;
+        }
+        case 12:
+        {
+            participant pl_eq;
+
+            if (!(b -= pl_eq))
+            {
+                data_in_structure = false;
+            }
+            break;
         }
 
         }

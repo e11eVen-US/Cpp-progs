@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include "Class_container.hpp"
 #include "Class_header.hpp"
+#include <stdlib.h>
 
 int participant_team::get_points_cont(int i)
 {
@@ -54,17 +55,18 @@ void participant_team::operator+=(participant pl_eq)
 	
 	if (amount < max_amount)
 	{
-		ofstream file;
-		file.open("file.txt", ios::app);
+		fstream file;
+		file.open("file.txt", ios::app | ios::out);
 		file << " " << pl_eq.get_club(); file << " " << pl_eq.get_city(); file << " " << pl_eq.get_coach(); file << " " << pl_eq.get_date();
 		file << " " << pl_eq.get_budget(); file << " " << pl_eq.get_points(); file << " " << pl_eq.get_place() << '\n';
-		file.close();
+		
 		c.push_back(std::move(pl_eq));
 		++amount;
+		file.close();
 
-		FILE* fileC = fopen("file.txt", "r+");
-		fprintf(fileC, "%d", amount);
-		fclose(fileC);
+		file.open("file.txt", ios::out | ios::in);
+		file << amount;
+		file.close();
 	}
 	else
 	{
@@ -81,27 +83,6 @@ void participant_team::add_participant(participant test)
 	c.push_back(move(test));
 	amount++;	
 }
-
-/*void participant_team::expand_vector()
-{
-	using namespace std;
-
-	vector<participant> test_vector;
-	int16_t test1;
-	string test2;
-
-	if (amount < max_amount)
-	{
-		c.push_back(test_vector[0]);
-		amount++;
-	}
-	else
-	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-		cerr << "There is no data in structure or already max participants\n";
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-	}
-}*/
 
 void participant_team::read_from_file()
 {
@@ -171,5 +152,37 @@ void participant_team::delete_participant(bool* data_in_structure, int16_t numbe
 
 	c.erase(c.begin() + number_of_participant);
 	--amount;		
+}
+
+int participant_team::operator-=(participant pl_eq)
+{
+	using namespace std;
+
+	if (amount != 0)
+	{
+		c.erase(c.end() -1);
+		--amount;
+		
+		ofstream file;
+
+		file.open("file.txt");
+		file << amount << "\n";
+		for (register int i = 0; i < amount; i++)
+		{
+			c[i].file_filling_cont_main(file);
+		}
+
+		file.close();
+		if (amount == 0)
+		{
+			return 0;
+		}
+	}
+	else
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+		cerr << "There's no data in structure.\n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
 }
 

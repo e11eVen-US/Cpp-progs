@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CLASS_HEADER_HPP
 #define CLASS_HEADER_HPP
 

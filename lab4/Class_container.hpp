@@ -28,5 +28,6 @@ public:
 	std::string get_club_cont(int i);
 
 	void operator+=(participant pl_eq);
+	int operator-=(participant pl_eq);
 };
 #endif // !CLASS_CONTAINER_HPP
