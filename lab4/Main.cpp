@@ -9,8 +9,7 @@
 #include "Task_header.hpp"
 #include "Class_container.hpp"
 
-
-
+const int all_options = 14;
 
 int main()
 {
@@ -70,16 +69,16 @@ int main()
                 cout << "Data in structure: false\n";
                 cout << "String in file: " << amount_of_teams << "\n\n";
             }
-            cout << "What do you wanna do?\n 1. Filling structure from file\n 2. All teams from city you'll type.\n 3. The team with the highest ratio of points scored to money spent (budget)\n 4. Structure printing\n 5. Fill structure(and file) from keyboard\n 6. Add to structure and file.\n 7. Delete from structure\n\n\n For the 5th lab below.\n 8.+= \n 9. ==\n 10. << ofstream\n 11. << ostream\n ---> 12. -= \n ";
+            cout << "What do you wanna do?\n 1. Filling structure from file\n 2. All teams from city you'll type.\n 3. The team with the highest ratio of points scored to money spent (budget)\n 4. Structure printing\n 5. Fill structure(and file) from keyboard\n 6. Add to structure and file.\n 7. Delete from structure\n\n\n For the 5th lab below.\n 8.+= \n 9. ==\n 10. << ofstream\n 11. << ostream\n 12. -= \n 13. >>of 14. >>o ---> ";
             cin >> choice;
-            if (choice < 1 || choice > 12)
+            if (choice < 1 || choice > all_options)
             {
                 system("cls");
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-                cerr << "You have typed " << choice << ". You have to type 1 - 12.\n";
+                cerr << "You have typed " << choice << ". You have to type 1 - " << all_options << "\n";
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
             }
-        } while (choice < 1 || choice > 12);
+        } while (choice < 1 || choice > all_options);
 
 
         cin.ignore();
@@ -268,6 +267,28 @@ int main()
             {
                 data_in_structure = false;
             }
+            break;
+        }
+        case 13:
+        {
+            participant test;
+
+            cin >> test;
+
+            cout << test;
+            break;
+        }
+        case 14:
+        {
+            ifstream file;
+            participant test;
+
+            file.open("file2.txt");
+            file >> test;
+            file.close();
+
+            cout << test;
+
             break;
         }
 

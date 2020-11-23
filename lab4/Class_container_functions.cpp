@@ -49,14 +49,14 @@ participant_team::~participant_team()
 	amount = 0;
 }
 
-void participant_team::operator+=(participant pl_eq)
+void participant_team::operator+=(participant& pl_eq)
 {
 	using namespace std;
 	
 	if (amount < max_amount)
 	{
 		fstream file;
-		file.open("file.txt", ios::app | ios::out);
+		file.open("file.txt", ios::app);
 		file << " " << pl_eq.get_club(); file << " " << pl_eq.get_city(); file << " " << pl_eq.get_coach(); file << " " << pl_eq.get_date();
 		file << " " << pl_eq.get_budget(); file << " " << pl_eq.get_points(); file << " " << pl_eq.get_place() << '\n';
 		
@@ -154,11 +154,11 @@ void participant_team::delete_participant(bool* data_in_structure, int16_t numbe
 	--amount;		
 }
 
-int participant_team::operator-=(participant pl_eq)
+int participant_team::operator-=(participant& pl_eq)
 {
 	using namespace std;
 
-	if (amount != 0)
+	if (c.size() != 0)
 	{
 		c.erase(c.end() -1);
 		--amount;

@@ -56,7 +56,7 @@ void third_task(participant_team* b, int16_t amount_of_teams, bool* data_in_stru
 
         for (register int i = 1; i < b->get_amount(); i++)
         {
-            if (float(b->get_points_cont(i) /*a[i].get_points()*/) / float(b->get_budget_cont(i)  /*a[i].get_budget()*/) > (float(b->get_points_cont(number)/*a[number].get_points()*/) / float(b->get_budget_cont(number) /*a[number].get_budget()*/)))
+            if (float(b->get_points_cont(i)) / float(b->get_budget_cont(i)) > (float(b->get_points_cont(number)) / float(b->get_budget_cont(number))))
             {
                 number = i;
             }

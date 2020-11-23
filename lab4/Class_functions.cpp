@@ -75,7 +75,7 @@ bool operator==(participant eq_eq, participant eq_eq2)
     return true;
 }
 
-std::ostream& operator<<(std::ostream& stream, participant test)
+std::ostream& operator<<(std::ostream& stream, participant& test)
 {
     ws; stream << test.club; ws; stream << test.city; ws;
     stream << test.coach; ws; stream << test.date; ws; stream << test.budget; ws;
@@ -83,36 +83,47 @@ std::ostream& operator<<(std::ostream& stream, participant test)
 
     return stream;
 }
-std::istream& participant::operator>>(std::istream& stream)
+std::istream& operator>>(std::istream& stream, participant& test)
 {
-    getline(stream, club);
-    getline(stream, city);
-    getline(stream, coach);
-    getline(stream, date);
-    stream >> budget;
-    stream >> points;
-    stream >> place; 
+    getline(stream, test.club);
+    getline(stream, test.city);
+    getline(stream, test.coach);
+    getline(stream, test.date);
+    stream >> test.budget;
+    stream >> test.points;
+    stream >> test.place;
     stream.ignore();
 
     return stream;
 }
-std::ofstream& operator<<(std::ofstream& stream, participant test)
+std::ofstream& operator<<(std::ofstream& stream, participant& test)
 {
-    stream << ' '; stream << test.club; stream << ' '; stream << test.city; stream << ' ';
-    stream << test.coach; stream << ' '; stream << test.date; stream << ' '; stream << test.budget; stream << ' ';
-    stream << test.points; stream << ' '; stream << test.place << '\n';
+    stream << ' '; 
+    stream << test.club; 
+    stream << ' '; 
+    stream << test.city; 
+    stream << ' ';
+    stream << test.coach; 
+    stream << ' '; 
+    stream << test.date; 
+    stream << ' '; 
+    stream << test.budget; 
+    stream << ' ';
+    stream << test.points; 
+    stream << ' '; 
+    stream << test.place << '\n';
 
     return stream;
 }
-std::ifstream& participant::operator>>(std::ifstream& stream)
+std::ifstream& operator>>(std::ifstream& stream, participant& test)
 {
-    getline(stream, club);
-    getline(stream, city);
-    getline(stream, coach);
-    getline(stream, date);
-    stream >> budget;
-    stream >> points;
-    stream >> place;
+    stream >> test.club;
+    stream >> test.city;
+    stream >> test.coach;
+    stream >> test.date;
+    stream >> test.budget;
+    stream >> test.points;
+    stream >> test.place;
     stream.ignore();
     return stream;
 }
@@ -122,9 +133,13 @@ void participant::struct_print(participant* c)
     using std::cout;
     using std::endl;
 
-    wc; cout << club; wc; cout << city; wc; 
-    cout << coach; wc; cout << date; wc; cout << budget; wc;
-    cout << points; wc; cout << place << endl;
+    wc; cout << club; 
+    wc; cout << city; 
+    wc; cout << coach; 
+    wc; cout << date; 
+    wc; cout << budget; 
+    wc; cout << points; 
+    wc; cout << place << endl;
 }
 
 void participant::file_filling(participant* c, std::ofstream& file)

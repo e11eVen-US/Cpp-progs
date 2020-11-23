@@ -18,7 +18,6 @@ public:
 	void read_from_file();
 	void file_and_particpant_filling();
 	void print();
-	//void expand_vector();
 	void file_filling_cont(std::ofstream& file);
 
 	int get_amount();
@@ -27,7 +26,7 @@ public:
 	std::string get_city_cont(int i);
 	std::string get_club_cont(int i);
 
-	void operator+=(participant pl_eq);
-	int operator-=(participant pl_eq);
+	void operator+=(participant& pl_eq);
+	int operator-=(participant& pl_eq);
 };
 #endif // !CLASS_CONTAINER_HPP

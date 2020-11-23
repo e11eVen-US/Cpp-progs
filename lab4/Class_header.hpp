@@ -42,10 +42,10 @@ public:
     void set_place(int a2);
 
     friend bool operator==(participant eq_eq, participant eq_eq2);
-    friend std::ostream& operator<<(std::ostream& stream, participant test);
-    friend std::ofstream& operator<<(std::ofstream& stream, participant test);
-    std::istream& operator>>(std::istream& stream);
-    std::ifstream& operator>>(std::ifstream& stream);
+    friend std::ostream& operator<<(std::ostream& stream, participant& test);
+    friend std::ofstream& operator<<(std::ofstream& stream, participant& test);
+    friend std::istream& operator>>(std::istream& stream, participant& test);
+    friend std::ifstream& operator>>(std::ifstream& stream, participant& test);
 };
 
 #endif
